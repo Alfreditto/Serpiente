@@ -72,10 +72,12 @@ public class Snake {
     }
 
     public void quitarAnillas() {
-        this.anillas[this.numAnillas - 1] = '\u0000';
-        numAnillas--;
+        if (numAnillas > 0) { //Faltaba este if.
+            this.anillas[this.numAnillas - 1] = '\u0000';
+            numAnillas--;
+        }
         System.out.println(nombre + " ha perdido una anilla!");
-        if (numAnillas <= 0) {
+        if (numAnillas == 0) {
             setViva(false);
             System.out.println(nombre + " ha muerto! :c");
         }
@@ -113,30 +115,30 @@ public class Snake {
         setViva(false);
         System.out.println("Una malvada mangosta a matado a " + nombre);
     }
-    public void pasarTiempo(){
+
+    public void pasarTiempo() {
+        //En el método pasarTiempo el while no hay que ponerlo, era lo que fallaba.
         int randm;
-        while (this.viva) {
-            System.out.println(toString());
-            randm = (int) (Math.random() * 10);
-                if (this.getEdad() < 10) {
-                    if (randm < 8) {
-                        this.sumarAnillas();
-                    } else {
-                        this.mudarPiel();
-                    }
-                } else {
-                    if (randm < 9) {
-                        this.quitarAnillas();
-                    } else {
-                        this.mudarPiel();
-                    }
-                }
-                this.envejecer();
+        randm = (int) (Math.random() * 10);
+        if (this.getEdad() < 10) {
+            if (randm < 8) {
+                this.sumarAnillas();
+            } else {
+                this.mudarPiel();
+            }
+        } else {
+            if (randm < 9) {
+                this.quitarAnillas();
+            } else {
+                this.mudarPiel();
+            }
         }
+        this.envejecer();
     }
+
     @Override
     public String toString() {
-        String resultado = new String();
+        String resultado = "";
         resultado += nombre;
         resultado += " " + edad + " ";
         for (int i = 0; i < numAnillas; i++) {
