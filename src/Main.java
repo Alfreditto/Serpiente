@@ -5,7 +5,6 @@ public class Main {
         System.out.println(prueba);
         int seg = 0, atq, numcom, posicioncom;
         while (seg < 300) {
-            System.out.println(n1);
             if (seg % 5 == 0) {
                 n1.nacimiento();
             }
@@ -19,11 +18,12 @@ public class Main {
                     for (int i = 0; i < numcom; i++) {
                         posicioncom = (int) (Math.random()* n1.getNumSerpientes());
                         n1.getSerpientes()[posicioncom].setViva(false);
-                        System.out.println("Una mangosta se ha comido a la serpiente");
+                        System.out.println("Una mangosta se ha comido a la serpiente" + posicioncom);
                     }
                 }
             }
             n1.limpiarNido();
+            System.out.println(n1);
             Thread.sleep(1000);
             seg++;
         }

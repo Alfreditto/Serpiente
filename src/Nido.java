@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Nido {
     private String nombre;
     private Snake[] serpientes = new Snake[20];
@@ -10,9 +8,10 @@ public class Nido {
         this.numSerpientes = 1;
         serpientes[0] = new Snake("serpiente " + numSerpientes);
     }
-    public void nacimiento(){
-        int randm = (int) (Math.random()*3);
-        for (int i = 0; i <= randm && numSerpientes<serpientes.length; i++) {
+
+    public void nacimiento() {
+        int randm = (int) (Math.random() * 3);
+        for (int i = 0; i <= randm && numSerpientes < serpientes.length; i++) {
             this.serpientes[numSerpientes] = new Snake("serpiente " + numSerpientes);
             numSerpientes++;
         }
@@ -20,19 +19,20 @@ public class Nido {
 
     public void limpiarNido() {
         for (int i = 0; i < numSerpientes; i++) {
-            if (!this.serpientes[i].isViva()){
+            if (!this.serpientes[i].isViva()) {
                 quitarSerpiente(i);
             }
         }
     }
 
-    public void quitarSerpiente(int pos){
-        for (int i = pos; i < numSerpientes-1; i++) {
-            this.serpientes[i] = this.serpientes[i+1];
+    public void quitarSerpiente(int pos) {
+        for (int i = pos; i < numSerpientes - 1; i++) {
+            this.serpientes[i] = this.serpientes[i + 1];
         }
-        this.serpientes[numSerpientes-1] = null;
+        this.serpientes[numSerpientes - 1] = null;
         numSerpientes--;
     }
+
     public int getNumSerpientes() {
         return numSerpientes;
     }
@@ -70,6 +70,7 @@ public class Nido {
         String resultado = new String();
         for (int i = 0; i < numSerpientes; i++) {
             resultado += serpientes[i].toString() + " ";
+            resultado += "\n";
         }
         return resultado;
     }
