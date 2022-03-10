@@ -1,4 +1,13 @@
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws InterruptedException the interrupted exception
+     */
     public static void main(String[] args) throws InterruptedException {
         Nido n1 = new Nido("Nidito");
         Snake prueba = new Snake("Prueba");
